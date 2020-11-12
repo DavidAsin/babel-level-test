@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import es.david.marvel.R
-import es.david.marvel.data.network.response.get_characters.Result
+import es.david.marvel.dto.ResultDTO
 import kotlinx.android.synthetic.main.item_character.view.*
 
 
-class CharacterAdapter(private val onClick: (Result) -> Unit) :
+class CharacterAdapter(private val onClick: (ResultDTO) -> Unit) :
     RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
-    private var charactersList: MutableList<Result> = mutableListOf()
+    private var charactersList: MutableList<ResultDTO> = mutableListOf()
 
     //Initiate and inflate the cart_menu view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,7 +30,7 @@ class CharacterAdapter(private val onClick: (Result) -> Unit) :
     //Holder class holding and initiating all the views
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(character: Result, onClick: (Result) -> Unit) {
+        fun bindItems(character: ResultDTO, onClick: (ResultDTO) -> Unit) {
             itemView.tvName.text = character.name
             Picasso.get().load("${character.thumbnail.path}.${character.thumbnail.extension}")
                 .fit()
@@ -43,7 +43,7 @@ class CharacterAdapter(private val onClick: (Result) -> Unit) :
 
     }
 
-    fun updateData(newData: List<Result>) {
+    fun updateData(newData: List<ResultDTO>) {
         charactersList.addAll(newData)
         notifyDataSetChanged()
     }

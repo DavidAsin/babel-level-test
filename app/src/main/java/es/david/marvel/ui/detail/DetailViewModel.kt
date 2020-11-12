@@ -1,9 +1,9 @@
 package es.david.marvel.ui.detail
 
 import androidx.lifecycle.ViewModel
-import es.david.marvel.data.network.response.get_character_detail.Result
 import es.david.marvel.data.repository.DetailRepository
 import es.david.marvel.data.util.StateLiveData
+import es.david.marvel.dto.ResultDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +12,7 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
 
     private val compositeDisposable = CompositeDisposable()
 
-    val stateDetailLoad = StateLiveData<Result>()
+    val stateDetailLoad = StateLiveData<ResultDTO>()
 
     fun getCharacterDetail(characterID: Int) {
         detailRepository.getCharacterDetail(characterID)

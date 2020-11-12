@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import es.david.marvel.R
-import es.david.marvel.data.network.response.get_character_detail.Result
 import es.david.marvel.data.util.StateData
+import es.david.marvel.dto.ResultDTO
 import kotlinx.android.synthetic.main.fragment_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,7 +53,7 @@ class DetailFragment : Fragment() {
         })
     }
 
-    private fun setupView(character: Result) {
+    private fun setupView(character: ResultDTO) {
         tvName.text = character.name
         Picasso.get().load("${character.thumbnail.path}.${character.thumbnail.extension}")
             .fit()

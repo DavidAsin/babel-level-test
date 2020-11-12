@@ -1,7 +1,7 @@
 package es.david.marvel.data.network
 
-import es.david.marvel.data.network.response.get_character_detail.GetCharacterDetailResponse
-import es.david.marvel.data.network.response.get_characters.GetCharactersResponse
+import es.david.marvel.data.network.response.GetCharacterDetailResponse
+import es.david.marvel.data.network.response.GetCharactersResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
