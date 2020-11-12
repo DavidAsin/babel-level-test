@@ -31,11 +31,11 @@ class CharacterAdapter(private val onClick: (Result) -> Unit) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(character: Result, onClick: (Result) -> Unit) {
-            itemView.characterName.text = character.name
+            itemView.tvName.text = character.name
             Picasso.get().load("${character.thumbnail.path}.${character.thumbnail.extension}")
                 .fit()
                 .centerCrop()
-                .into(itemView.imageView)
+                .into(itemView.ivCharacter)
             itemView.setOnClickListener {
                 onClick(character)
             }

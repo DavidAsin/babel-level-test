@@ -54,11 +54,11 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupView(character: Result) {
-        characterName.text = character.name
+        tvName.text = character.name
         Picasso.get().load("${character.thumbnail.path}.${character.thumbnail.extension}")
             .fit()
             .centerCrop()
-            .into(imageView2)
-        characterDescription.text = character.description
+            .into(ivCharacter)
+        tvDescription.text = character.description
     }
 }

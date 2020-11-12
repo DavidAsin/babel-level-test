@@ -1,9 +1,9 @@
 package es.david.marvel.ui.characters
 
 import androidx.lifecycle.ViewModel
-import es.david.marvel.data.util.StateLiveData
 import es.david.marvel.data.network.response.get_characters.Result
 import es.david.marvel.data.repository.CharactersRepository
+import es.david.marvel.data.util.StateLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -24,6 +24,9 @@ class CharactersViewModel(private val charactersRepository: CharactersRepository
         charactersRepository.getCharacters(offset)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .retry { times, throwable ->
+                times < 3
+            }
             .doOnSubscribe {
                 stateCharactersLoad.postLoading()
             }

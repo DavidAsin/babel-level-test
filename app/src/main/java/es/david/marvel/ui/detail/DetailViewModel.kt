@@ -18,8 +18,11 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
         detailRepository.getCharacterDetail(characterID)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .retry { times, throwable ->
+                times < 3
+            }
             .doOnSubscribe {
-
+                stateDetailLoad.postLoading()
             }
             .subscribe(
                 { value ->
