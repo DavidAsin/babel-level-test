@@ -3,9 +3,10 @@ Esta aplicación sigue le patrón de diseño MVVM. He utilizado Koin para la iny
 
 En el paquete ui están las vistas y sus view models correspondientes.
 
-En el paquete data están los repositorios y la capa de networking. Dentro podemos encontrar también el paquete util, en él he implementado un wrapper para la clase LiveData que me permite gestionar los estados LOADING, ERROR y SUCCESS de la peticiones a los servicios web.
+En el paquete data están los repositorios y la capa de networking. Dentro también podemos encontrar el paquete mapper en el que se encuentran las clases para mappear loas responses a los DTOs, y el paquete util, en él he implementado un wrapper para la clase LiveData que me permite gestionar los estados LOADING, ERROR y SUCCESS de la peticiones a los servicios web.
 
-En el paquete di esta la configuración de la inyección de dependencias de los view models, los repositorios y la capa de networking.
+En el paquete di esta la configuración de la inyección de dependencias de los view models, los repositorios, los mappers y la capa de networking.
 
+En el paquete dto se encuentran las clases de DTO con las que la aplicación trabaja la información
 
 Debido a que no tengo más tiempo para desarrollar la aplicación no he podido realizar unit test y el control de errores está planteado pero no desarrollado
